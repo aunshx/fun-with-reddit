@@ -8,6 +8,7 @@
   --navbar-text-color: rgb(61, 60, 60);
   --very-light-grey-color: rgb(176, 174, 174);
   --reddit-color: #FF4500;
+  --light-reddit-color: #f0774b;
 }
 
 * {
@@ -24,6 +25,8 @@ body {
     transition: background-color 1s;
   background-position: 0 0, 4px 4px;
   background-size: 5px 5px;
+    font-family: 'Fredoka', sans-serif;
+
 }
 
 /* ------------------------------------- GENERAL ---------------------------- */
@@ -191,7 +194,6 @@ body {
   padding: 1em;
   color: var(--very-light-grey-color);
   font-size: 0.85em;
-  font-family: 'Fredoka', sans-serif;
   margin-top: 5em;
 }
 
@@ -207,7 +209,7 @@ body {
 }
 
 .sidebar .sub-name:hover {
-  color: var(--reddit-color);
+  color: var(--light-reddit-color);
 }
 
 /* -------------------- GO UP -------------------- */
