@@ -1,11 +1,16 @@
-import './App.css';
 import Navbar from './components/navbar/Navbar';
+import Card from './components/subreddit/Card';
+
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <>
      <Navbar />
-    </div>
+     <div className="flex_column" style={{ marginTop: '60px' }}>
+       <Card />
+     </div>
+    </>
   );
 }
 

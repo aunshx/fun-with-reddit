@@ -32,15 +32,16 @@ router.get('/get-posts', async (req, res) => {
                 title: post.title,
                 url: post.url,
                 post: post.subreddit.display_name,
-                name: post.name
+                name: post.name,
+                time: post.created,
+                link: post.permalink
               });
                 afterNameCount++;
             }
+            console.log(post);
           });
 
-          console.log(ans[afterNameCount-1].name)
-
-        return res.status(200).send([ans, ans[afterNameCount-1].name])
+        return res.status(200).send(ans)
     } catch (error) {
         console.log(error)
         return res.status(400).send({ msg: 'Bad Request' })
