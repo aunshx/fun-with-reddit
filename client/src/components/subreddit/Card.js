@@ -11,7 +11,7 @@ const Card = props => {
         <img src={testImage} alt='Test' />
       </div>
       <div className='flex_between'>
-        <div className='subreddit'>r/ProgrammerHumor</div>
+        <div className='subreddit-name'>r/ProgrammerHumor</div>
         <div className='author'>{moment.unix(1645970526).fromNow()}</div>
       </div>
       <div className='caption flex_middle cursor-pointer'>

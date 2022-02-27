@@ -59,6 +59,24 @@ body {
   align-items: center;
   justify-content: center;
 }
+.flex_left {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.flex_right {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.triple_grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  column-gap: 10px;
+  width: 1000px;
+  margin-top: 90px;
+}
 
 /* --------------------------------- NAVBAR --------------------------- */
 
@@ -71,6 +89,7 @@ body {
   color: var(--navbar-text-color);
   position: fixed;
   top: 0;
+  z-index: 100;
 }
 
 .navbar .left {
@@ -122,6 +141,7 @@ body {
   border-radius: 20px;
   padding: 1em;
   font-family: 'Fredoka', sans-serif;
+  margin: 1.8em 0;
 }
 
 .card:hover {
@@ -141,7 +161,7 @@ body {
  cursor: zoom-in;
 }
 
-.card .subreddit,
+.card .subreddit-name,
 .card .author {
   color: var(--very-light-grey-color);
   font-size: 0.7em;
@@ -157,4 +177,53 @@ body {
 
 .card .caption a:hover {
   color: var(--reddit-color);
+}
+
+/* -------------------- SUBREDDIT -------------------------- */
+.subreddit {
+  height: auto;
+  border: 1px solid red;
+}
+
+
+/* --------------------- SIDEBAR ----------------------------- */
+.sidebar {
+  height: 250px;
+  padding: 1em;
+  color: var(--very-light-grey-color);
+  font-size: 0.85em;
+  font-family: 'Fredoka', sans-serif;
+  margin-top: 5em;
+  border: 1px solid red;
+}
+
+.sidebar .sub-name{
+  margin: 2em 1em 1em 4em;
+  cursor: pointer;
+}
+
+.sidebar .sub-name:hover {
+  color: var(--reddit-color);
+}
+
+/* -------------------- GO UP -------------------- */
+.go-up {
+  position: fixed;
+  right: 25%;
+  bottom: 5%;
+  color: var(--navbar-text-color);
+  font-size: 30px;
+}
+
+.go-up:hover {
+  cursor: pointer;
+  color: var(--reddit-color);
+  animation: gelatine 0.5s 1 ease-in;
+}
+
+@keyframes gelatine {
+  from, to { transform: scale(1, 1); }
+  25% { transform: scale(0.9, 1.1); }
+  50% { transform: scale(1.1, 0.9); }
+  75% { transform: scale(0.95, 1.05); }
 }
