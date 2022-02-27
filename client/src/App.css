@@ -182,7 +182,6 @@ body {
 /* -------------------- SUBREDDIT -------------------------- */
 .subreddit {
   height: auto;
-  border: 1px solid red;
 }
 
 
@@ -194,12 +193,17 @@ body {
   font-size: 0.85em;
   font-family: 'Fredoka', sans-serif;
   margin-top: 5em;
-  border: 1px solid red;
 }
 
 .sidebar .sub-name{
   margin: 2em 1em 1em 4em;
   cursor: pointer;
+}
+
+.sidebar .sub-name-active{
+  margin: 2em 1em 1em 4em;
+  cursor: pointer;
+  color: var(--reddit-color);
 }
 
 .sidebar .sub-name:hover {

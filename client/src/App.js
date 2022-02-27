@@ -49,7 +49,7 @@ function App() {
             ref={refElement}
             ref={up}
             className='flex_column'
-            style={{ height: "1px" }}
+            style={{ height: "1px", marginTop: '-50px' }}
           ></div>
         </div>
       </div>
