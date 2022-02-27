@@ -13,16 +13,16 @@ const Sidebar = ({ type, changeType }) => {
         r/ProgrammerHumor
       </div>
       <div
-        className={type === 'ask-reddit' ? "sub-name-active" : "sub-name"}
-        onClick={() => changeType("ask-reddit")}
+        className={type === 'memes' ? "sub-name-active" : "sub-name"}
+        onClick={() => changeType("memes")}
       >
-        r/AskReddit
+        r/memes
       </div>
       <div
-        className={type === 'funny' ? "sub-name-active" : "sub-name"}
-        onClick={() => changeType("funny")}
+        className={type === 'thats-insane' ? "sub-name-active" : "sub-name"}
+        onClick={() => changeType("thats-insane")}
       >
-        r/funny
+        r/ThatsInsane
       </div>
       <div
         className={type === 'gaming' ? "sub-name-active" : "sub-name"}

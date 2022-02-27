@@ -1,14 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import moment from 'moment'
-
-import testImage from '../../resources/images/testImage.jpg'
 
 const Card = ({ element }) => {
   return (
     <div className='card'>
       <div className='image flex_middle'>
-        <img src={element.url} alt='Test' />
+        {element.type === "photo" && <img src={element.url} alt='Test' />}
+        {element.type === "video" && 
+            <video controls autoplay>
+                <source src={element.url} />
+            </video>
+        }
       </div>
       <div className='flex_between'>
         <div className='subreddit-name'>r/{element.post}</div>
@@ -16,9 +18,7 @@ const Card = ({ element }) => {
       </div>
       <div className='caption flex_middle cursor-pointer'>
         <a
-          href={
-            `https://reddit.com${element.link}`
-          }
+          href={`https://reddit.com${element.link}`}
           target='_blank'
           rel='noreferrer nofollow'
         >

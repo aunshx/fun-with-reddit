@@ -154,6 +154,13 @@ body {
   margin-bottom: 0.5em;
 }
 
+.card .image video {
+  height: 250px;
+  width: 300px;
+  border-radius: 10px;
+  margin-bottom: 0.5em;
+}
+
 .card .image img:hover {
  transform: scale(1.3);
  transition: 0.5s;
