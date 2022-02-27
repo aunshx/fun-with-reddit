@@ -13,7 +13,7 @@ const r = new snoowrap({
 
 
 // Get question details from challenge_id
-router.get('/get-posts', async (req, res) => {
+router.get('/get-posts-programmer-humor', async (req, res) => {
 
     try {
         let dataL = 0;
@@ -34,10 +34,90 @@ router.get('/get-posts', async (req, res) => {
                 post: post.subreddit.display_name,
                 name: post.name,
                 time: post.created,
-                link: post.permalink
+                link: post.permalink,
+                type: 'photo'
               });
                 afterNameCount++;
             }
+            console.log(post);
+          });
+
+        return res.status(200).send(ans)
+    } catch (error) {
+        console.log(error)
+        return res.status(400).send({ msg: 'Bad Request' })
+    }
+})
+
+
+router.get('/get-posts-memes', async (req, res) => {
+
+    try {
+        let dataL = 0;
+        let limit = 10;
+
+        let ans = []
+        let afterNameCount = 0
+        let afterName = ''
+
+        let b = await r
+          .getSubreddit("memes")
+          .getNew({ limit: limit, after: afterName })
+          .map((post, index, data) => {
+            if (post.url.split("/")[2] === "i.redd.it") {
+              ans.push({
+                title: post.title,
+                url: post.url,
+                post: post.subreddit.display_name,
+                name: post.name,
+                time: post.created,
+                link: post.permalink,
+                type: 'photo'
+              });
+                afterNameCount++;
+            }
+            console.log(post);
+          });
+
+        return res.status(200).send(ans)
+    } catch (error) {
+        console.log(error)
+        return res.status(400).send({ msg: 'Bad Request' })
+    }
+})
+
+router.get('/get-posts-thats-insane', async (req, res) => {
+
+    try {
+        let dataL = 0;
+        let limit = 10;
+
+        let ans = []
+        let afterNameCount = 0
+        let afterName = ''
+
+        let b = await r
+          .getSubreddit("ThatsInsane")
+          .getNew({ limit: limit })
+          .map((post, index, data) => {
+            let type = ''
+            if(post.url.split('/')[2] === 'v.redd.it'){
+              type='video'
+            } else {
+              type='photo'
+            }
+            // if (post.url.split("/")[2] === "i.redd.it") {
+              ans.push({
+                title: post.title,
+                url: post.url,
+                post: post.subreddit.display_name,
+                name: post.name,
+                time: post.created,
+                link: post.permalink,
+                type: type
+              });
+                afterNameCount++;
+            // }
             console.log(post);
           });
 
