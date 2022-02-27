@@ -147,13 +147,9 @@ body {
   margin: 1.8em 0;
 }
 
-.card:hover {
-  border: 1px solid var(--reddit-color);
-}
-
 .card .image img {
   height: 250px;
-  width: 350px;
+  width: 300px;
   border-radius: 10px;
   margin-bottom: 0.5em;
 }

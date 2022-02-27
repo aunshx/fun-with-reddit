@@ -2,18 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Card from './Card'
 
-const Subreddit = ({ }) => {
+const Subreddit = ({ images }) => {
   return (
     <div className='subreddit flex_column'>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+        {images.length > 0 && (
+            images.map((element, index) => (
+                <div key={index}>
+                    <Card element={element} />
+                </div>
+            ))
+        )}
     </div>
   );
 };
