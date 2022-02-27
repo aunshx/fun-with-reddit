@@ -1,0 +1,23 @@
+{
+  "name": "redditApi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+     "server": "nodemon server --ignore client",
+    "client": "npm start --prefix client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-sanitizer": "^1.0.6",
+    "moment": "^2.29.1",
+    "node-cron": "^3.0.0",
+    "nodemon": "^2.0.15",
+    "snoowrap": "^1.23.0"
+  }
+}
