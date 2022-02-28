@@ -12,7 +12,7 @@ import githubLogo from "../../resources/images/githubLogo.png";
 import githubLogoHover from "../../resources/images/githubLogoHover.png";
 import githubLogoDark from "../../resources/images/githubLogoDark.png";
 
-const SideNavbar = ({ close, type, changeType }) => {
+export const SideNavbar = ({ close, type, changeType }) => {
   const [githubHover, setGithubHover] = useState(false);
   const [mediumHover, setMediumHover] = useState(false);
 
@@ -29,7 +29,9 @@ const SideNavbar = ({ close, type, changeType }) => {
   const onMediumLeave = () => {
     setMediumHover(false);
   };
+
   return (
+    <>
       <div className='sidenavbar'>
         <div className='triple_grid_sidebar'>
           <div></div>
@@ -48,25 +50,19 @@ const SideNavbar = ({ close, type, changeType }) => {
             r/ProgrammerHumor
           </div>
           <div
-            className={
-              type === "memes" ? "elements-active" : "elements"
-            }
+            className={type === "memes" ? "elements-active" : "elements"}
             onClick={() => changeType("memes")}
           >
             r/memes
           </div>
           <div
-            className={
-              type === "thats-insane" ? "elements-active" : "elements"
-            }
+            className={type === "thats-insane" ? "elements-active" : "elements"}
             onClick={() => changeType("thats-insane")}
           >
             r/ThatsInsane
           </div>
           <div
-            className={
-              type === "gaming" ? "elements-active" : "elements"
-            }
+            className={type === "gaming" ? "elements-active" : "elements"}
             onClick={() => changeType("gaming")}
           >
             r/gaming
@@ -124,7 +120,6 @@ const SideNavbar = ({ close, type, changeType }) => {
           </div>
         </div>
       </div>
+    </>
   );
-};
-
-export default SideNavbar
+}

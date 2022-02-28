@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Drawer } from "@mui/material";
 
-import funRedditLogo from '../../resources/images/funRedditLogo.png'
+import funRedditLogo from "../../resources/images/funRedditLogo.png";
 
 import mediumLogo from "../../resources/images/mediumLogo.png";
 import mediumLogoHover from "../../resources/images/mediumLogoHover.png";
@@ -13,9 +13,8 @@ import githubLogo from "../../resources/images/githubLogo.png";
 import githubLogoHover from "../../resources/images/githubLogoHover.png";
 import githubLogoDark from "../../resources/images/githubLogoDark.png";
 
-import useWindowSize from '../../utils/useWindowSize'
-import SideNavbarbar from './SideNavbar';
-
+import useWindowSize from "../../utils/useWindowSize";
+import {SideNavbar} from "./SideNavbar";
 
 const Navbar = ({ type, changeType }) => {
   const { width } = useWindowSize();
@@ -129,7 +128,7 @@ const Navbar = ({ type, changeType }) => {
           onClose={closeMenu}
           className='sidebar_nav-right'
         >
-          <SideNavbarbar
+          <SideNavbar
             close={closeMenu}
             type={type}
             changeType={changeType}
@@ -140,6 +139,6 @@ const Navbar = ({ type, changeType }) => {
   );
 };
 
-Navbar.propTypes = {}
+Navbar.propTypes = {};
 
-export default Navbar
+export default Navbar;
