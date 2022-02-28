@@ -4,14 +4,16 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-     "server": "nodemon server --ignore client",
-    "client": "npm start --prefix client"
+    "server": "nodemon server --ignore client",
+    "client": "npm start --prefix client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.26.0",
+    "config": "^3.3.7",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-sanitizer": "^1.0.6",

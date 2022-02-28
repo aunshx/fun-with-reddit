@@ -1,14 +1,19 @@
 const router = require("express").Router();
 const snoowrap = require("snoowrap");
+const config = require('config');
 
-require("dotenv").config();
+const redditUserAgent = config.get("redditUserAgent");
+const redditClientID = config.get("redditClientID");
+const redditClientSecret = config.get("redditClientSecret");
+const redditUsername = config.get("redditUsername");
+const redditPassword = config.get("redditPassword");
 
 const r = new snoowrap({
-  userAgent: process.env.REDDIT_USER_AGENT,
-  clientId: process.env.REDDIT_CLIENT_ID,
-  clientSecret: process.env.REDDIT_CLIENT_SECRET,
-  username: process.env.REDDIT_USERNAME,
-  password: process.env.REDDIT_PASSWORD,
+  userAgent: redditUserAgent,
+  clientId: redditClientID,
+  clientSecret: redditClientSecret,
+  username: redditUsername,
+  password: redditPassword,
 });
 
 
