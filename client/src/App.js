@@ -100,16 +100,18 @@ function App() {
           ) : (
             <Subreddit images={images} setRefChange={setRefChange} />
           )}
-          <div
-            ref={refElement}
-            className='flex_column'
-            style={{ height: "1px", marginTop: "-50px" }}
-          >
-            <div ref={up}></div>
-          </div>
+          {width > 768 && (
+            <div
+              ref={refElement}
+              className='flex_column'
+              style={{ height: "1px", marginTop: "-50px" }}
+            >
+              <div ref={up}></div>
+            </div>
+          )}
         </div>
       </div>
-      {fixedContent && (
+      {fixedContent && width > 768 && (
         <div className='go-up' data-aos='fade-up' onClick={goUp}>
           <FontAwesomeIcon icon={faCircleArrowUp} />
         </div>

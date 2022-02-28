@@ -194,7 +194,7 @@ body {
 @media only screen and (max-width: 786px ) {
   .triple_grid {
   display: grid;
-  grid-template-columns: 1000fr 0.05fr;
+  grid-template-columns: 1fr;
   column-gap: 10px;
   width: 95vw;
   margin-top: 90px;
@@ -321,6 +321,26 @@ body {
   width: 300px;
   border-radius: 10px;
   margin-bottom: 0.5em;
+}
+
+@media only screen and (max-width: 400px ) {
+  .card {
+    width: 290px;
+  }
+
+  .card .image img {
+  height: 250px;
+  width: 270px;
+  border-radius: 10px;
+  margin-bottom: 0.5em;
+}
+
+.card .image video {
+  height: 250px;
+  width: 270px;
+  border-radius: 10px;
+  margin-bottom: 0.5em;
+}
 }
 
 .card .image img:hover {
