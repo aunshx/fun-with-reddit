@@ -9,6 +9,7 @@
   --very-light-grey-color: rgb(176, 174, 174);
   --reddit-color: #FF4500;
   --light-reddit-color: #f0774b;
+  --aunsh-website-color: rgb(0, 145, 255) ;
 }
 
 * {
@@ -131,7 +132,7 @@ body {
 }
 
 .navbar .aunsh a:hover {
-  color: rgb(0, 145, 255);
+  color: var(--aunsh-website-color);
 }
 
 /* --------------------------------- CARD --------------------------------- */
@@ -205,10 +206,26 @@ body {
   cursor: pointer;
 }
 
+.sidebar .sub-name-creator {
+  margin: 3em 1em 1em 4em;
+}
+
+.sidebar .sub-name-creator a {
+  cursor: pointer;
+  font-family: 'Comfortaa', cursive;
+  font-size: 0.8em;
+  text-decoration: none;
+  color: var(--very-light-grey-color);
+}
+
 .sidebar .sub-name-active{
   margin: 2em 1em 1em 4em;
   cursor: pointer;
   color: var(--reddit-color);
+}
+
+.sidebar .sub-name-creator a:hover{
+  color: var(--aunsh-website-color);
 }
 
 .sidebar .sub-name:hover {
