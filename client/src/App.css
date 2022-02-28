@@ -171,6 +171,35 @@ body {
   margin-top: 90px;
 }
 
+@media only screen and (max-width: 1028px ) {
+  .triple_grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  column-gap: 10px;
+  width: 800px;
+  margin-top: 90px;
+}
+}
+@media only screen and (max-width: 900px ) {
+  .triple_grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  column-gap: 10px;
+  width: 700px;
+  margin-top: 90px;
+}
+}
+
+@media only screen and (max-width: 786px ) {
+  .triple_grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  column-gap: 10px;
+  width: 700px;
+  margin-top: 90px;
+}
+}
+
 /* --------------------------------- NAVBAR --------------------------- */
 
 .navbar {
@@ -223,6 +252,48 @@ body {
 .navbar .aunsh a:hover {
   color: var(--aunsh-website-color);
 }
+
+.navbar .hamburger {
+        cursor: pointer;
+        animation: verticalToHorizontal 0.3s 1 linear;
+        color: var(--navbar-text-color);
+    }
+
+ .navbar .hamburger--tilted {
+      cursor: pointer;
+      transform: rotate(90deg);
+      animation: horizontalToVertical 0.3s 1 linear;
+      color: var(--navbar-text-color);
+  }
+
+    .navbar .hamburger--tilted:hover,
+  .navbar .hamburger--tilted-login:hover {
+      color: var(--light-reddit-color);
+  }
+
+  @keyframes verticalToHorizontal {
+        0% {
+            transform: rotate(90deg);
+        }
+        50% {
+            transform: rotate(45deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    @keyframes horizontalToVertical {
+        0% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(45deg);
+        }
+        100% {
+            transform: rotate(90deg);
+        }
+    }
 
 /* --------------------------------- CARD --------------------------------- */
 .card {

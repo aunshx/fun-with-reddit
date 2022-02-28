@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 import funRedditLogo from '../../resources/images/funRedditLogo.png'
 
@@ -12,13 +11,15 @@ import mediumLogoDark from "../../resources/images/mediumLogoDark.png";
 import githubLogo from "../../resources/images/githubLogo.png";
 import githubLogoHover from "../../resources/images/githubLogoHover.png";
 import githubLogoDark from "../../resources/images/githubLogoDark.png";
-import linkedInLogo from "../../resources/images/linkedInLogo.png";
-import linkedInLogoHover from "../../resources/images/linkedInLogoHover.png";
-import linkedInLogoDark from "../../resources/images/linkedInLogoDark.png";
+
+import useWindowSize from '../../utils/useWindowSize'
+
 
 const Navbar = props => {
+    const { width } = useWindowSize()
     const [githubHover, setGithubHover] = useState(false)
     const [mediumHover, setMediumHover] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
 
     const onGithubEnter = () => {
       setGithubHover(true);
@@ -34,6 +35,10 @@ const Navbar = props => {
       setMediumHover(false);
     };
 
+    const normalMenu = () => {
+      setIsOpen(!isOpen)
+    }
+
   return (
     <div className='navbar flex_between'>
       <div className='flex_middle left'>
@@ -43,43 +48,69 @@ const Navbar = props => {
         <div>Fun</div>
       </div>
       <div className='right flex_evenly'>
-        <div
-          lassName='flex_middle'
-          onMouseEnter={onGithubEnter}
-          onMouseLeave={onGithubLeave}
-        >
-          <a
-            href='https://github.com/aunshx'
-            target={"_blank"}
-            rel='noreferrer nofollow'
-          >
-            <img
-              src={githubHover ? githubLogoHover : githubLogo}
-              alt='Github Logo'
-              style={{ marginTop: "0.5em" }}
-              className='cursor-pointer'
-            />
-          </a>
-        </div>
-        <div
-          className='flex_middle cursor-pointer'
-          onMouseEnter={onMediumEnter}
-          onMouseLeave={onMediumLeave}
-        >
-          <a
-            href='https://aunsh.medium.com'
-            target={"_blank"}
-            rel='noreferrer nofollow'
-          >
-            <img
-              src={mediumHover ? mediumLogoHover : mediumLogo}
-              alt='Medium Logo'
-            />
-          </a>
-        </div>
-        <div className='flex_middle aunsh cursor-pointer'>
-          <a href='https://aunsh.com'>a.</a>
-        </div>
+        {width > 786 ? (
+          <>
+            <div
+              lassName='flex_middle'
+              onMouseEnter={onGithubEnter}
+              onMouseLeave={onGithubLeave}
+            >
+              <a
+                href='https://github.com/aunshx'
+                target={"_blank"}
+                rel='noreferrer nofollow'
+              >
+                <img
+                  src={githubHover ? githubLogoHover : githubLogo}
+                  alt='Github Logo'
+                  style={{ marginTop: "0.5em" }}
+                  className='cursor-pointer'
+                />
+              </a>
+            </div>
+            <div
+              className='flex_middle cursor-pointer'
+              onMouseEnter={onMediumEnter}
+              onMouseLeave={onMediumLeave}
+            >
+              <a
+                href='https://aunsh.medium.com'
+                target={"_blank"}
+                rel='noreferrer nofollow'
+              >
+                <img
+                  src={mediumHover ? mediumLogoHover : mediumLogo}
+                  alt='Medium Logo'
+                />
+              </a>
+            </div>
+            <div className='flex_middle aunsh cursor-pointer'>
+              <a href='https://aunsh.com'>a.</a>
+            </div>
+          </>
+        ) : (
+          <>
+            {isOpen ? (
+              <FontAwesomeIcon
+                icon={faBars}
+                className={"hamburger--tilted cursor-pointer"}
+                onClick={normalMenu}
+                style={{
+                  fontSize: 20,
+                }}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={faBars}
+                className={"hamburger cursor-pointer"}
+                onClick={normalMenu}
+                style={{
+                  fontSize: 20,
+                }}
+              />
+            )}
+          </>
+        )}
       </div>
     </div>
   );
