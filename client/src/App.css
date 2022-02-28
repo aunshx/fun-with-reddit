@@ -10,6 +10,9 @@
   --reddit-color: #FF4500;
   --light-reddit-color: #f0774b;
   --aunsh-website-color: rgb(0, 145, 255) ;
+  --disc-color: rgb(16, 201, 16);
+  --photo-color: rgb(16, 167, 201);
+  --video-color: rgb(201, 16, 87);
 }
 
 * {
@@ -139,7 +142,7 @@ body {
 .card {
   background-color: var(--navbar-color);
   color: var(--navbar-text-color);
-  min-height: 350px;
+  /* min-height: 350px; */
   width: 330px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 20px;
@@ -172,6 +175,38 @@ body {
 .card .author {
   color: var(--very-light-grey-color);
   font-size: 0.7em;
+}
+
+.card .type {
+  font-size: 0.6em;
+  margin-left: 1em;
+}
+
+.card .type .discussion {
+  color: var(--light-color) ;
+  border: 1px solid var(--disc-color) ;
+  border: 1px solid var(--disc-color) ;
+  background-color: var(--disc-color);
+  border-radius: 5px;
+  padding: 0 0.3em;
+}
+
+.card .type .photo {
+  color: var(--light-color) ;
+  border: 1px solid var(--photo-color) ;
+  border: 1px solid var(--photo-color) ;
+  background-color: var(--photo-color);
+  border-radius: 5px;
+  padding: 0 0.3em;
+}
+
+.card .type .video {
+  color: var(--light-color) ;
+  border: 1px solid var(--video-color) ;
+  border: 1px solid var(--video-color) ;
+  background-color: var(--video-color);
+  border-radius: 5px;
+  padding: 0 0.3em;
 }
 
 .card .caption a {

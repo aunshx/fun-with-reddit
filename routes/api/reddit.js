@@ -121,8 +121,7 @@ router.get('/get-posts-thats-insane', async (req, res) => {
                  type: 'photo',
                });
             }             
-                afterNameCount++;
-            console.log(post);
+            afterNameCount++;
           });
 
         return res.status(200).send(ans)
@@ -143,16 +142,30 @@ router.get('/get-posts-gaming', async (req, res) => {
         let afterName = ''
 
         let b = await r
-          .getSubreddit("ThatsInsane")
+          .getSubreddit("gaming")
           .getNew({ limit: limit })
           .map((post, index, data) => {
-            let type = ''
-            if(post.url.split('/')[2] === 'v.redd.it'){
-              type='video'
+             if(post.url.split('/')[2] === 'v.redd.it'){
+               ans.push({
+                 title: post.title,
+                 url: post.secure_media.reddit_video.fallback_url,
+                 post: post.subreddit.display_name,
+                 name: post.name,
+                 time: post.created,
+                 link: post.permalink,
+                 type: "video",
+               });
+            } else if(post.url.split('/')[2] === 'i.redd.it') {
+               ans.push({
+                 title: post.title,
+                 url: post.url,
+                 post: post.subreddit.display_name,
+                 name: post.name,
+                 time: post.created,
+                 link: post.permalink,
+                 type: 'photo',
+               });
             } else {
-              type='photo'
-            }
-            // if (post.url.split("/")[2] === "i.redd.it") {
               ans.push({
                 title: post.title,
                 url: post.url,
@@ -160,11 +173,11 @@ router.get('/get-posts-gaming', async (req, res) => {
                 name: post.name,
                 time: post.created,
                 link: post.permalink,
-                type: type
+                type: "discussion",
               });
-                afterNameCount++;
-            // }
-            console.log(post);
+            }           
+            afterNameCount++;
+            console.log(post)
           });
 
         return res.status(200).send(ans)
