@@ -16,7 +16,6 @@ const Subreddit = ({ images, setRefChange }) => {
     checker.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         setRefChange(true);
-        console.log('USUUSUSU')
       } else {
         setRefChange(false);
       }

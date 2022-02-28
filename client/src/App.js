@@ -44,14 +44,11 @@ function App() {
   const [typeOfApi, setTypeOfApi] = useState("programmer-humor");
 
   const requestSent = async (typeOfApi, afterName, imagesNow) => {
-    console.log(afterName, 'ss')
     const body = JSON.stringify({
       afterName
     })
     try {
       let res = await api.post(`/reddit/get-posts-${typeOfApi}`, body);
-
-      // console.log(res.data)
 
       if(imagesNow.length > 0) {
         setImages([...imagesNow, ...res.data]);
@@ -100,10 +97,12 @@ function App() {
             <Subreddit images={images} setRefChange={setRefChange} />
           )}
           <div
-            ref={fixedContent ? up : refElement}
+            ref={refElement}
             className='flex_column'
             style={{ height: "1px", marginTop: "-50px" }}
-          ></div>
+          >
+            <div ref={up} ></div>
+          </div>
         </div>
       </div>
       {fixedContent && (
