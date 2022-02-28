@@ -3,12 +3,12 @@ import moment from 'moment'
 
 const Card = ({ element, count }) => {
   return (
-    <div className='card' data-aos='fade-up' data-aos-delay={count * 100}>
+    <div className='card' data-aos='fade-in' data-aos-delay={count * 50}>
       {element.type !== "discussion" && (
         <div className='image flex_middle'>
           {element.type === "photo" && <img src={element.url} alt='Test' />}
           {element.type === "video" && (
-            <video controls autoplay='autoplay' muted>
+            <video controls autoPlay muted>
               <source src={element.url} type='video/mp4' />
               <source src={element.url} type='video/ogg' />
               <source src={element.url} type='video/webm' />

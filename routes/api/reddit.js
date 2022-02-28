@@ -13,7 +13,11 @@ const r = new snoowrap({
 
 
 // Get question details from challenge_id
-router.get('/get-posts-programmer-humor', async (req, res) => {
+router.post('/get-posts-programmer-humor', async (req, res) => {
+
+  const { afterName } = req.body
+
+  console.log(afterName, 'HITII')
 
     try {
         let dataL = 0;
@@ -21,7 +25,6 @@ router.get('/get-posts-programmer-humor', async (req, res) => {
 
         let ans = []
         let afterNameCount = 0
-        let afterName = ''
 
         let b = await r
           .getSubreddit("ProgrammerHumor")
@@ -69,7 +72,9 @@ router.get('/get-posts-programmer-humor', async (req, res) => {
 })
 
 
-router.get('/get-posts-memes', async (req, res) => {
+router.post('/get-posts-memes', async (req, res) => {
+
+  const { afterName } = req.body;
 
     try {
         let dataL = 0;
@@ -77,7 +82,6 @@ router.get('/get-posts-memes', async (req, res) => {
 
         let ans = []
         let afterNameCount = 0
-        let afterName = ''
 
         let b = await r
           .getSubreddit("memes")
@@ -124,7 +128,9 @@ router.get('/get-posts-memes', async (req, res) => {
     }
 })
 
-router.get('/get-posts-thats-insane', async (req, res) => {
+router.post('/get-posts-thats-insane', async (req, res) => {
+
+  const { afterName } = req.body;
 
     try {
         let dataL = 0;
@@ -132,7 +138,6 @@ router.get('/get-posts-thats-insane', async (req, res) => {
 
         let ans = []
         let afterNameCount = 0
-        let afterName = ''
 
         let b = await r
           .getSubreddit("ThatsInsane")
@@ -180,7 +185,9 @@ router.get('/get-posts-thats-insane', async (req, res) => {
     }
 })
 
-router.get('/get-posts-gaming', async (req, res) => {
+router.post('/get-posts-gaming', async (req, res) => {
+
+  const { afterName } = req.body;
 
     try {
         let dataL = 0;
@@ -188,7 +195,6 @@ router.get('/get-posts-gaming', async (req, res) => {
 
         let ans = []
         let afterNameCount = 0
-        let afterName = ''
 
         let b = await r
           .getSubreddit("gaming")

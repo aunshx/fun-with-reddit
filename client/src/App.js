@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import axios from "axios";
 import Navbar from "./components/navbar/Navbar";
 import Card from "./components/subreddit/Card";
 import Subreddit from "./components/subreddit/Subreddit";
 import Sidebar from "./components/sidebar/Sidebar";
 import Spinner from "./components/layout/Spinner";
+import api from './utils/api'
 
 import "./App.css";
 
@@ -39,14 +39,25 @@ function App() {
   const [images, setImages] = useState([]);
   const [afterName, setAfterName] = useState('');
   const [spinnerOn, setSpinnerOn] = useState(true);
+  const [refChange, setRefChange] = useState(false)
 
   const [typeOfApi, setTypeOfApi] = useState("programmer-humor");
 
-  const requestSent = async (typeOfApi) => {
+  const requestSent = async (typeOfApi, afterName, imagesNow) => {
+    console.log(afterName, 'ss')
+    const body = JSON.stringify({
+      afterName
+    })
     try {
-      let res = await axios.get(`/api/reddit/get-posts-${typeOfApi}`);
+      let res = await api.post(`/reddit/get-posts-${typeOfApi}`, body);
 
-      setImages(res.data);
+      // console.log(res.data)
+
+      if(imagesNow.length > 0) {
+        setImages([...imagesNow, ...res.data]);
+      } else {
+        setImages(res.data)
+      }
       setAfterName(res.data[res.data.length - 1].name);
     } catch (e) {
       console.log(e);
@@ -57,12 +68,20 @@ function App() {
     if(afterName === ''){
       setSpinnerOn(true)
     }
-    requestSent(typeOfApi);
+    requestSent(typeOfApi, afterName, '');
     setSpinnerOn(false)
   }, [typeOfApi]);
 
+  useEffect(() => {
+    if(refChange) {
+      requestSent(typeOfApi, afterName, images);
+    }
+  }, [refChange])
+
   const changeType = (type) => {
+    setAfterName('')
     setTypeOfApi(type)
+    setImages([]);
   }
 
   const goUp = () => {
@@ -75,7 +94,11 @@ function App() {
       <div className='flex_column'>
         <div className='triple_grid'>
           <Sidebar innerRef={up} type={typeOfApi} changeType={changeType} />
-          {spinnerOn ? <Spinner /> : <Subreddit images={images} />}
+          {spinnerOn ? (
+            <Spinner />
+          ) : (
+            <Subreddit images={images} setRefChange={setRefChange} />
+          )}
           <div
             ref={fixedContent ? up : refElement}
             className='flex_column'
