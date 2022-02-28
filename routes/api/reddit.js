@@ -16,7 +16,6 @@ const r = new snoowrap({
   password: redditPassword,
 });
 
-
 // Get question details from challenge_id
 router.post('/get-posts-programmer-humor', async (req, res) => {
 
