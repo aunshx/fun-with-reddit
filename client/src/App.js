@@ -10,11 +10,13 @@ import "./App.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowUp } from "@fortawesome/free-solid-svg-icons";
+import useWindowSize from "./utils/useWindowSize";
 
 function App() {
   let checker = useRef();
   const up = useRef();
   const [fixedContent, setFixedContent] = useState(false);
+  const { width } = useWindowSize()
 
   const refElement = useCallback((node) => {
     if (checker.current) {
@@ -87,10 +89,12 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar type={typeOfApi} changeType={changeType} />
       <div className='flex_column'>
         <div className='triple_grid'>
-          <Sidebar innerRef={up} type={typeOfApi} changeType={changeType} />
+          {width > 768 && (
+            <Sidebar innerRef={up} type={typeOfApi} changeType={changeType} />
+          )}
           {spinnerOn ? (
             <Spinner />
           ) : (
@@ -101,7 +105,7 @@ function App() {
             className='flex_column'
             style={{ height: "1px", marginTop: "-50px" }}
           >
-            <div ref={up} ></div>
+            <div ref={up}></div>
           </div>
         </div>
       </div>

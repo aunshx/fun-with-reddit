@@ -17,35 +17,35 @@ import useWindowSize from '../../utils/useWindowSize'
 import SideNavbarbar from './SideNavbar';
 
 
-const Navbar = props => {
-    const { width } = useWindowSize()
-    const [githubHover, setGithubHover] = useState(false)
-    const [mediumHover, setMediumHover] = useState(false)
-    const [isOpen, setIsOpen] = useState(false)
-    const [drawer, setDrawer] = useState(true)
+const Navbar = ({ type, changeType }) => {
+  const { width } = useWindowSize();
+  const [githubHover, setGithubHover] = useState(false);
+  const [mediumHover, setMediumHover] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [drawer, setDrawer] = useState(false);
 
-    const onGithubEnter = () => {
-      setGithubHover(true);
-    };
-    const onGithubLeave = () => {
-      setGithubHover(false);
-    };
-    
-    const onMediumEnter = () => {
-      setMediumHover(true);
-    };
-    const onMediumLeave = () => {
-      setMediumHover(false);
-    };
+  const onGithubEnter = () => {
+    setGithubHover(true);
+  };
+  const onGithubLeave = () => {
+    setGithubHover(false);
+  };
 
-    const closeMenu = () => {
-      setIsOpen(false)
-      setDrawer(false)
-    }
-    const openMenu = () => {
-      setIsOpen(true)
-      setDrawer(true)
-    }
+  const onMediumEnter = () => {
+    setMediumHover(true);
+  };
+  const onMediumLeave = () => {
+    setMediumHover(false);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    setDrawer(false);
+  };
+  const openMenu = () => {
+    setIsOpen(true);
+    setDrawer(true);
+  };
 
   return (
     <>
@@ -129,12 +129,16 @@ const Navbar = props => {
           onClose={closeMenu}
           className='sidebar_nav-right'
         >
-          <SideNavbarbar close={closeMenu} />
+          <SideNavbarbar
+            close={closeMenu}
+            type={type}
+            changeType={changeType}
+          />
         </Drawer>
       </div>
     </>
   );
-}
+};
 
 Navbar.propTypes = {}
 

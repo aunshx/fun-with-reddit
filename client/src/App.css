@@ -194,9 +194,9 @@ body {
 @media only screen and (max-width: 786px ) {
   .triple_grid {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1000fr 0.05fr;
   column-gap: 10px;
-  width: 700px;
+  width: 95vw;
   margin-top: 90px;
 }
 }
@@ -475,6 +475,13 @@ body {
 
 .sidenavbar .elements {
   color: var(--grey-color);
+  font-size: 1em;
+  margin: 0.6em 0;
+  cursor: pointer;
+}
+
+.sidenavbar .elements-active {
+  color: var(--reddit-color);
   font-size: 1em;
   margin: 0.6em 0;
   cursor: pointer;

@@ -12,25 +12,24 @@ import githubLogo from "../../resources/images/githubLogo.png";
 import githubLogoHover from "../../resources/images/githubLogoHover.png";
 import githubLogoDark from "../../resources/images/githubLogoDark.png";
 
-const SideNavbar = ({ close }) => {
-    const [githubHover, setGithubHover] = useState(false);
-    const [mediumHover, setMediumHover] = useState(false);
+const SideNavbar = ({ close, type, changeType }) => {
+  const [githubHover, setGithubHover] = useState(false);
+  const [mediumHover, setMediumHover] = useState(false);
 
-    const onGithubEnter = () => {
-      setGithubHover(true);
-    };
-    const onGithubLeave = () => {
-      setGithubHover(false);
-    };
+  const onGithubEnter = () => {
+    setGithubHover(true);
+  };
+  const onGithubLeave = () => {
+    setGithubHover(false);
+  };
 
-    const onMediumEnter = () => {
-      setMediumHover(true);
-    };
-    const onMediumLeave = () => {
-      setMediumHover(false);
-    };
+  const onMediumEnter = () => {
+    setMediumHover(true);
+  };
+  const onMediumLeave = () => {
+    setMediumHover(false);
+  };
   return (
-    <>
       <div className='sidenavbar'>
         <div className='triple_grid_sidebar'>
           <div></div>
@@ -40,10 +39,38 @@ const SideNavbar = ({ close }) => {
           </div>
         </div>
         <div className='flex_column'>
-          <div className='elements'>r/ProgrammerHumor</div>
-          <div className='elements'>r/memes</div>
-          <div className='elements'>r/ThatsInsane</div>
-          <div className='elements'>r/gaming</div>
+          <div
+            className={
+              type === "programmer-humor" ? "elements-active" : "elements"
+            }
+            onClick={() => changeType("programmer-humor")}
+          >
+            r/ProgrammerHumor
+          </div>
+          <div
+            className={
+              type === "memes" ? "elements-active" : "elements"
+            }
+            onClick={() => changeType("memes")}
+          >
+            r/memes
+          </div>
+          <div
+            className={
+              type === "thats-insane" ? "elements-active" : "elements"
+            }
+            onClick={() => changeType("thats-insane")}
+          >
+            r/ThatsInsane
+          </div>
+          <div
+            className={
+              type === "gaming" ? "elements-active" : "elements"
+            }
+            onClick={() => changeType("gaming")}
+          >
+            r/gaming
+          </div>
           <div className='icons flex_column'>
             <div
               lassName='flex_middle'
@@ -97,8 +124,7 @@ const SideNavbar = ({ close }) => {
           </div>
         </div>
       </div>
-    </>
   );
-}
+};
 
 export default SideNavbar
