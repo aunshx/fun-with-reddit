@@ -17,14 +17,10 @@ router.post('/get-posts-programmer-humor', async (req, res) => {
 
   const { afterName } = req.body
 
-  console.log(afterName, 'HITII')
-
     try {
-        let dataL = 0;
         let limit = 10;
 
         let ans = []
-        let afterNameCount = 0
 
         let b = await r
           .getSubreddit("ProgrammerHumor")
@@ -61,7 +57,6 @@ router.post('/get-posts-programmer-humor', async (req, res) => {
                 type: "discussion",
               });
             }
-            afterNameCount++;
           });
 
         return res.status(200).send(ans)
@@ -77,7 +72,6 @@ router.post('/get-posts-memes', async (req, res) => {
   const { afterName } = req.body;
 
     try {
-        let dataL = 0;
         let limit = 10;
 
         let ans = []
@@ -118,7 +112,6 @@ router.post('/get-posts-memes', async (req, res) => {
                 type: "discussion",
               });
             }
-            afterNameCount++;
           });
 
         return res.status(200).send(ans)
@@ -133,7 +126,6 @@ router.post('/get-posts-thats-insane', async (req, res) => {
   const { afterName } = req.body;
 
     try {
-        let dataL = 0;
         let limit = 10;
 
         let ans = []
@@ -174,7 +166,6 @@ router.post('/get-posts-thats-insane', async (req, res) => {
                 type: "discussion",
               });
             }
-            afterNameCount++;
           });
 
         return res.status(200).send(ans)
@@ -189,7 +180,6 @@ router.post('/get-posts-gaming', async (req, res) => {
   const { afterName } = req.body;
 
     try {
-        let dataL = 0;
         let limit = 10;
 
         let ans = []
@@ -230,7 +220,6 @@ router.post('/get-posts-gaming', async (req, res) => {
                 type: "discussion",
               });
             }
-            afterNameCount++;
           });
 
         return res.status(200).send(ans)
