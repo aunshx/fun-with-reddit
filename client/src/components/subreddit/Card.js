@@ -7,8 +7,11 @@ const Card = ({ element }) => {
       <div className='image flex_middle'>
         {element.type === "photo" && <img src={element.url} alt='Test' />}
         {element.type === "video" && 
-            <video controls autoplay>
-                <source src={element.url} />
+            <video controls autoplay='autoplay' muted>
+                <source src={element.url} type='video/mp4' />
+                <source src={element.url} type='video/ogg' />
+                <source src={element.url} type='video/webm' />
+                Browser does not support the video format.
             </video>
         }
       </div>

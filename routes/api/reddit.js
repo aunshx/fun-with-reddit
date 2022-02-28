@@ -100,6 +100,52 @@ router.get('/get-posts-thats-insane', async (req, res) => {
           .getSubreddit("ThatsInsane")
           .getNew({ limit: limit })
           .map((post, index, data) => {
+            if(post.url.split('/')[2] === 'v.redd.it'){
+               ans.push({
+                 title: post.title,
+                 url: post.secure_media.reddit_video.fallback_url,
+                 post: post.subreddit.display_name,
+                 name: post.name,
+                 time: post.created,
+                 link: post.permalink,
+                 type: "video",
+               });
+            } else {
+               ans.push({
+                 title: post.title,
+                 url: post.url,
+                 post: post.subreddit.display_name,
+                 name: post.name,
+                 time: post.created,
+                 link: post.permalink,
+                 type: 'photo',
+               });
+            }             
+                afterNameCount++;
+            console.log(post);
+          });
+
+        return res.status(200).send(ans)
+    } catch (error) {
+        console.log(error)
+        return res.status(400).send({ msg: 'Bad Request' })
+    }
+})
+
+router.get('/get-posts-gaming', async (req, res) => {
+
+    try {
+        let dataL = 0;
+        let limit = 10;
+
+        let ans = []
+        let afterNameCount = 0
+        let afterName = ''
+
+        let b = await r
+          .getSubreddit("ThatsInsane")
+          .getNew({ limit: limit })
+          .map((post, index, data) => {
             let type = ''
             if(post.url.split('/')[2] === 'v.redd.it'){
               type='video'
