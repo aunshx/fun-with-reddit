@@ -141,7 +141,7 @@ router.post('/get-posts-thats-insane', async (req, res) => {
 
         let b = await r
           .getSubreddit("ThatsInsane")
-          .getNew({ limit: limit })
+          .getNew({ limit: limit, after: afterName })
           .map((post, index, data) => {
             if (post.url.split("/")[2] === "v.redd.it") {
               ans.push({
@@ -175,7 +175,6 @@ router.post('/get-posts-thats-insane', async (req, res) => {
               });
             }
             afterNameCount++;
-            console.log(post);
           });
 
         return res.status(200).send(ans)
@@ -198,28 +197,28 @@ router.post('/get-posts-gaming', async (req, res) => {
 
         let b = await r
           .getSubreddit("gaming")
-          .getNew({ limit: limit })
+          .getNew({ limit: limit, after: afterName })
           .map((post, index, data) => {
-             if(post.url.split('/')[2] === 'v.redd.it'){
-               ans.push({
-                 title: post.title,
-                 url: post.secure_media.reddit_video.fallback_url,
-                 post: post.subreddit.display_name,
-                 name: post.name,
-                 time: post.created,
-                 link: post.permalink,
-                 type: "video",
-               });
-            } else if(post.url.split('/')[2] === 'i.redd.it') {
-               ans.push({
-                 title: post.title,
-                 url: post.url,
-                 post: post.subreddit.display_name,
-                 name: post.name,
-                 time: post.created,
-                 link: post.permalink,
-                 type: 'photo',
-               });
+            if (post.url.split("/")[2] === "v.redd.it") {
+              ans.push({
+                title: post.title,
+                url: post.secure_media.reddit_video.fallback_url,
+                post: post.subreddit.display_name,
+                name: post.name,
+                time: post.created,
+                link: post.permalink,
+                type: "video",
+              });
+            } else if (post.url.split("/")[2] === "i.redd.it") {
+              ans.push({
+                title: post.title,
+                url: post.url,
+                post: post.subreddit.display_name,
+                name: post.name,
+                time: post.created,
+                link: post.permalink,
+                type: "photo",
+              });
             } else {
               ans.push({
                 title: post.title,
@@ -230,7 +229,7 @@ router.post('/get-posts-gaming', async (req, res) => {
                 link: post.permalink,
                 type: "discussion",
               });
-            }           
+            }
             afterNameCount++;
           });
 
