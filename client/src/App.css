@@ -13,6 +13,7 @@
   --disc-color: rgb(16, 201, 16);
   --photo-color: rgb(16, 167, 201);
   --video-color: rgb(201, 16, 87);
+  --grey-color: grey;
 }
 
 * {
@@ -444,4 +445,83 @@ body {
   25% { transform: scale(0.9, 1.1); }
   50% { transform: scale(1.1, 0.9); }
   75% { transform: scale(0.95, 1.05); }
+}
+
+/* ------------------------------ SIDEBAR ---------------------------- */
+.sidenavbar {
+  width: 250px;
+}
+
+.sidenavbar .triple_grid_sidebar {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.sidenavbar .title {
+  color: var(--reddit-color);
+  font-size: 1.3em;
+}
+
+.sidenavbar .close {
+  color: var(--very-light-grey-color);
+  cursor: pointer;
+}
+
+.sidenavbar .close:hover {
+  color: red;
+}
+
+.sidenavbar .elements {
+  color: var(--grey-color);
+  font-size: 1em;
+  margin: 0.6em 0;
+  cursor: pointer;
+}
+
+.sidenavbar .elements:hover {
+  color: var(--light-reddit-color);
+}
+
+.sidenavbar .icons {
+  font-family: 'Comfortaa', cursive;
+  font-size: 1.8em;
+}
+
+.sidenavbar .icons {
+  margin-top: 0.5em;
+}
+
+.sidenavbar .icons img {
+  object-fit: contain;
+  width: 20px;
+  height: 20px;
+  margin: 0.3em 0;
+}
+
+.sidenavbar .icons .aunsh a {
+  margin: 0 0 0em 0;
+  color: var(--navbar-text-color);
+  text-decoration: none;
+}
+
+.sidenavbar .aunsh a:hover {
+  color: var(--aunsh-website-color);
+}
+
+.sidenavbar .credits {
+    margin-top: 1em;
+}
+
+.sidenavbar .credits a {
+  cursor: pointer;
+  font-family: 'Comfortaa', cursive;
+  font-size: 0.7em;
+  text-decoration: none;
+  color: var(--very-light-grey-color);
+}
+
+.sidenavbar .credits a:hover {
+  color: var(--aunsh-website-color);
 }
