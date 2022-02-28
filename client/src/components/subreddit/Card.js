@@ -1,9 +1,9 @@
 import React from 'react'
 import moment from 'moment'
 
-const Card = ({ element }) => {
+const Card = ({ element, count }) => {
   return (
-    <div className='card'>
+    <div className='card' data-aos='fade-up' data-aos-delay={count * 100}>
       {element.type !== "discussion" && (
         <div className='image flex_middle'>
           {element.type === "photo" && <img src={element.url} alt='Test' />}

@@ -27,7 +27,17 @@ router.get('/get-posts-programmer-humor', async (req, res) => {
           .getSubreddit("ProgrammerHumor")
           .getNew({ limit: limit, after: afterName })
           .map((post, index, data) => {
-            if (post.url.split("/")[2] === "i.redd.it") {
+            if (post.url.split("/")[2] === "v.redd.it") {
+              ans.push({
+                title: post.title,
+                url: post.secure_media.reddit_video.fallback_url,
+                post: post.subreddit.display_name,
+                name: post.name,
+                time: post.created,
+                link: post.permalink,
+                type: "video",
+              });
+            } else if (post.url.split("/")[2] === "i.redd.it") {
               ans.push({
                 title: post.title,
                 url: post.url,
@@ -35,11 +45,20 @@ router.get('/get-posts-programmer-humor', async (req, res) => {
                 name: post.name,
                 time: post.created,
                 link: post.permalink,
-                type: 'photo'
+                type: "photo",
               });
-                afterNameCount++;
+            } else {
+              ans.push({
+                title: post.title,
+                url: post.url,
+                post: post.subreddit.display_name,
+                name: post.name,
+                time: post.created,
+                link: post.permalink,
+                type: "discussion",
+              });
             }
-            console.log(post);
+            afterNameCount++;
           });
 
         return res.status(200).send(ans)
@@ -64,7 +83,17 @@ router.get('/get-posts-memes', async (req, res) => {
           .getSubreddit("memes")
           .getNew({ limit: limit, after: afterName })
           .map((post, index, data) => {
-            if (post.url.split("/")[2] === "i.redd.it") {
+            if (post.url.split("/")[2] === "v.redd.it") {
+              ans.push({
+                title: post.title,
+                url: post.secure_media.reddit_video.fallback_url,
+                post: post.subreddit.display_name,
+                name: post.name,
+                time: post.created,
+                link: post.permalink,
+                type: "video",
+              });
+            } else if (post.url.split("/")[2] === "i.redd.it") {
               ans.push({
                 title: post.title,
                 url: post.url,
@@ -72,11 +101,20 @@ router.get('/get-posts-memes', async (req, res) => {
                 name: post.name,
                 time: post.created,
                 link: post.permalink,
-                type: 'photo'
+                type: "photo",
               });
-                afterNameCount++;
+            } else {
+              ans.push({
+                title: post.title,
+                url: post.url,
+                post: post.subreddit.display_name,
+                name: post.name,
+                time: post.created,
+                link: post.permalink,
+                type: "discussion",
+              });
             }
-            console.log(post);
+            afterNameCount++;
           });
 
         return res.status(200).send(ans)
@@ -100,28 +138,39 @@ router.get('/get-posts-thats-insane', async (req, res) => {
           .getSubreddit("ThatsInsane")
           .getNew({ limit: limit })
           .map((post, index, data) => {
-            if(post.url.split('/')[2] === 'v.redd.it'){
-               ans.push({
-                 title: post.title,
-                 url: post.secure_media.reddit_video.fallback_url,
-                 post: post.subreddit.display_name,
-                 name: post.name,
-                 time: post.created,
-                 link: post.permalink,
-                 type: "video",
-               });
+            if (post.url.split("/")[2] === "v.redd.it") {
+              ans.push({
+                title: post.title,
+                url: post.secure_media.reddit_video.fallback_url,
+                post: post.subreddit.display_name,
+                name: post.name,
+                time: post.created,
+                link: post.permalink,
+                type: "video",
+              });
+            } else if (post.url.split("/")[2] === "i.redd.it") {
+              ans.push({
+                title: post.title,
+                url: post.url,
+                post: post.subreddit.display_name,
+                name: post.name,
+                time: post.created,
+                link: post.permalink,
+                type: "photo",
+              });
             } else {
-               ans.push({
-                 title: post.title,
-                 url: post.url,
-                 post: post.subreddit.display_name,
-                 name: post.name,
-                 time: post.created,
-                 link: post.permalink,
-                 type: 'photo',
-               });
-            }             
+              ans.push({
+                title: post.title,
+                url: post.url,
+                post: post.subreddit.display_name,
+                name: post.name,
+                time: post.created,
+                link: post.permalink,
+                type: "discussion",
+              });
+            }
             afterNameCount++;
+            console.log(post);
           });
 
         return res.status(200).send(ans)
@@ -177,7 +226,6 @@ router.get('/get-posts-gaming', async (req, res) => {
               });
             }           
             afterNameCount++;
-            console.log(post)
           });
 
         return res.status(200).send(ans)

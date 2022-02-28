@@ -8,7 +8,7 @@ const Subreddit = ({ images }) => {
         {images.length > 0 && (
             images.map((element, index) => (
                 <div key={index}>
-                    <Card element={element} />
+                    <Card element={element} count={index} />
                 </div>
             ))
         )}

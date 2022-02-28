@@ -3,9 +3,10 @@ import axios from "axios";
 import Navbar from "./components/navbar/Navbar";
 import Card from "./components/subreddit/Card";
 import Subreddit from "./components/subreddit/Subreddit";
+import Sidebar from "./components/sidebar/Sidebar";
+import Spinner from "./components/layout/Spinner";
 
 import "./App.css";
-import Sidebar from "./components/sidebar/Sidebar";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowUp } from "@fortawesome/free-solid-svg-icons";
@@ -36,7 +37,8 @@ function App() {
   }, []);
 
   const [images, setImages] = useState([]);
-  const [afterName, setAfterName] = useState([]);
+  const [afterName, setAfterName] = useState('');
+  const [spinnerOn, setSpinnerOn] = useState(true);
 
   const [typeOfApi, setTypeOfApi] = useState("programmer-humor");
 
@@ -52,7 +54,11 @@ function App() {
   };
 
   useEffect(() => {
+    if(afterName === ''){
+      setSpinnerOn(true)
+    }
     requestSent(typeOfApi);
+    setSpinnerOn(false)
   }, [typeOfApi]);
 
   const changeType = (type) => {
@@ -69,7 +75,7 @@ function App() {
       <div className='flex_column'>
         <div className='triple_grid'>
           <Sidebar innerRef={up} type={typeOfApi} changeType={changeType} />
-          <Subreddit images={images} />
+          {spinnerOn ? <Spinner /> : <Subreddit images={images} />}
           <div
             ref={fixedContent ? up : refElement}
             className='flex_column'
