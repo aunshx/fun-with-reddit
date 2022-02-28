@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  } from "@fortawesome/free-regular-svg-icons";
 
-import redditLogo from '../../resources/images/redditLogo.png'
+import funRedditLogo from '../../resources/images/funRedditLogo.png'
 
 import mediumLogo from "../../resources/images/mediumLogo.png";
 import mediumLogoHover from "../../resources/images/mediumLogoHover.png";
@@ -38,7 +38,7 @@ const Navbar = props => {
     <div className='navbar flex_between'>
       <div className='flex_middle left'>
         <div className='flex_middle'>
-          <img src={redditLogo} alt='Reddit Logo' />
+          <img src={funRedditLogo} alt='Reddit Logo' />
         </div>
         <div>Fun</div>
       </div>
