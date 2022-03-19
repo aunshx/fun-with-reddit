@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.674de1d5.css",
+    "main.js": "/static/js/main.9aeadfa6.js",
+    "static/media/funRedditLogo.png": "/static/media/funRedditLogo.4bcf5d68d0d6a96ebb2a.png",
+    "index.html": "/index.html",
+    "main.674de1d5.css.map": "/static/css/main.674de1d5.css.map",
+    "main.9aeadfa6.js.map": "/static/js/main.9aeadfa6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.674de1d5.css",
+    "static/js/main.9aeadfa6.js"
+  ]
+}
