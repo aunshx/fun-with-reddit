@@ -8,7 +8,7 @@
     "server": "nodemon server --ignore client",
     "client": "npm start --prefix client"
   },
-  "keywords": [],
+  "keywords": ["reddit-api", "lazy-loading", "snoowrap"],
   "author": "Aunsh Bandivadekar",
   "license": "ISC",
   "dependencies": {
