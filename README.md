@@ -47,8 +47,11 @@ Install client dependencies
 ```bash
   npm install
 ```
+&nbsp;
 
 Fetch reddit API keys and make your own .env file.
+
+&nbsp;
 
 Start the server
 
@@ -65,6 +68,11 @@ Start the client
 ## Authors
 
 - [@aunshx](https://www.github.com/aunshx)
+
+&nbsp;
+
+Check my portfolio website [aunsh.com](https://aunsh.com)
+
 
 ## License
 
